@@ -1,0 +1,128 @@
+* {
+    padding:0;
+    margin:0;
+}
+header {
+    width: 100%;
+    height: 20%;
+    float: left;
+}
+h1 {
+    font-size: 5em;
+    margin: 0 35%;
+    padding: 0 5%;
+}
+menu {
+    width: 20%;
+    height: auto;
+    float: left;
+    margin: 2% 0 0 2%;
+    border-style: solid;
+}
+menu ul{
+    margin: 0 5%;
+    padding: 5% 0;
+    list-style-type: none;
+}
+menu li {
+    margin: 5% 10% 0 10%;
+}
+li.registerFailed{
+    color:red;
+}
+button.chce {
+    width:100%;
+}
+main {
+    width: 60%;
+    float: left;
+    margin: 0 10px;
+}
+.upSide{
+    width: 100%;
+    height: 80px;
+}
+.leftSide{
+    width: 55%;
+    margin: 2% 2%;
+    float: left;
+    border: solid black;
+}
+.borderPicture {
+    width: 350px;
+    height: 300px;
+    margin: 1% 15%;
+    float: left;
+}
+img.imgPicture{
+    width: 350px;
+    height: 300px;
+    float: left;
+}
+.rightSide {
+    width: 35%;
+    margin: 2% 2%;
+    float: left;
+    border: solid black;
+}
+.rsHeading {
+    margin: 5% 0;
+    padding: 2% 5%;
+}
+.rsHeading h3{
+    width: 100%;
+    text-align: center;
+    border-bottom: solid 1px black;
+}
+.rsDescription {
+    width: 100%;
+}
+.rsDescription p{
+    width: 80%;
+    margin: 5% 10%;
+    text-align: center;
+    float: left;
+}
+.rsDescription a{
+    text-decoration: none;
+}
+.rsDescription a:visited {
+    color:black;
+}
+.rsDescription a:hover {
+    color: tomato;
+}
+input.pluseOrder, input.minuseOrder{
+    border-radius: 50%;
+    width: 1.5em;
+    height: 1.5em;
+    font-size: 1.5em;
+    background-color: black;
+    color:white;
+}
+input.countOrder{
+    width: 1.5em;
+    height: 1.5em;
+    font-size: 1.5em;
+    text-align: center;
+}
+input.pluseOrder:active, input.minuseOrder:active{
+    background-color: teal;
+}
+button.productCounter {
+    float: left;
+    width: 80%;
+}
+.mainLogging, .mainRegister{
+    width: 60%;
+    float: left;
+    margin: 0 10px;
+}
+table {
+    margin: 10% 20%;
+    padding: 10% 10%;
+    border-style: solid;
+}
+.LoggingSubmit, .registerSend {
+    width: 100%;
+}
