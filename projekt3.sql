@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jun 29, 2020 at 03:00 PM
+-- Generation Time: Jul 01, 2020 at 11:42 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.6
 
@@ -69,6 +69,53 @@ INSERT INTO `produkty` (`id`, `nazwa`, `opis`, `cena`, `kategoria`, `zdjecie`) V
 (1, 'lewis', 'blablabla', '24.21', 'spodnie', 'spodnie.jpeg'),
 (2, 'adidas', 'dobra koszulka polecam Michal Wisniewski', '81.00', 'koszulka', 'koszulka.jpeg');
 
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `widok_zamowienia`
+-- (See below for the actual view)
+--
+CREATE TABLE `widok_zamowienia` (
+`id_klienta` int(11)
+,`sum(cena_razem)` decimal(30,2)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `zamowienia`
+--
+
+CREATE TABLE `zamowienia` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `id_klienta` int(11) NOT NULL,
+  `id_produktu` int(11) NOT NULL,
+  `ilosc` tinyint(3) UNSIGNED NOT NULL,
+  `cena_za_szt` decimal(8,2) UNSIGNED NOT NULL,
+  `cena_razem` decimal(8,2) UNSIGNED NOT NULL,
+  `data` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `zamowienia`
+--
+
+INSERT INTO `zamowienia` (`id`, `id_klienta`, `id_produktu`, `ilosc`, `cena_za_szt`, `cena_razem`, `data`) VALUES
+(22, 2, 3, 4, '3.00', '3.00', '2020-07-01 08:31:36'),
+(24, 1, 1, 1, '24.00', '24.00', '2020-07-01 08:33:25'),
+(25, 1, 2, 3, '81.00', '243.00', '2020-07-01 09:08:07'),
+(26, 1, 1, 2, '24.00', '48.00', '2020-07-01 09:35:12'),
+(27, 2, 1, 2, '24.00', '48.00', '2020-07-01 09:37:45');
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `widok_zamowienia`
+--
+DROP TABLE IF EXISTS `widok_zamowienia`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `widok_zamowienia`  AS  select `zamowienia`.`id_klienta` AS `id_klienta`,sum(`zamowienia`.`cena_razem`) AS `sum(cena_razem)` from `zamowienia` group by `zamowienia`.`id_klienta` ;
+
 --
 -- Indexes for dumped tables
 --
@@ -86,6 +133,13 @@ ALTER TABLE `produkty`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `zamowienia`
+--
+ALTER TABLE `zamowienia`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_klienta` (`id_klienta`) USING BTREE;
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -100,6 +154,22 @@ ALTER TABLE `klienci`
 --
 ALTER TABLE `produkty`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `zamowienia`
+--
+ALTER TABLE `zamowienia`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `zamowienia`
+--
+ALTER TABLE `zamowienia`
+  ADD CONSTRAINT `zamowienia_ibfk_1` FOREIGN KEY (`id_klienta`) REFERENCES `klienci` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -134,13 +134,16 @@ $(document).ready(function () {
 
     });
 
-
-    $('input.pluseOrder').click(function () {
+    $('button.pluseOrder').click(function (e) {
+        e.preventDefault();
         $countOrderValue = $('input.countOrder').attr('value');
         $countOrderValue = parseInt($countOrderValue) + 1; 
         $('input.countOrder').attr('value', $countOrderValue);
     });
-    $('input.minuseOrder').click(function () {
+
+
+    $('button.minuseOrder').click(function (e) {
+        e.preventDefault();
         $countOrderValue = $('input.countOrder').attr('value');
         $countOrderValue = parseInt($countOrderValue) - 1; 
         if($countOrderValue < 1)

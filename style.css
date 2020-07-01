@@ -42,6 +42,19 @@ main {
     width: 100%;
     height: 80px;
 }
+.basket{
+    background-color: tomato;
+    width: 40%;
+    height: 100%;
+    float: right;
+}
+.basket li{
+    width: 50%;
+    margin: 2% 0 ;
+    float: left;
+    text-align: center;
+    list-style: none;
+}
 .leftSide{
     width: 55%;
     margin: 2% 2%;
@@ -92,7 +105,7 @@ img.imgPicture{
 .rsDescription a:hover {
     color: tomato;
 }
-input.pluseOrder, input.minuseOrder{
+button.pluseOrder, button.minuseOrder{
     border-radius: 50%;
     width: 1.5em;
     height: 1.5em;
@@ -106,7 +119,7 @@ input.countOrder{
     font-size: 1.5em;
     text-align: center;
 }
-input.pluseOrder:active, input.minuseOrder:active{
+button.pluseOrder:active, button.minuseOrder:active{
     background-color: teal;
 }
 button.productCounter {
